@@ -1,43 +1,33 @@
 import React, { useState } from 'react';
 
-const CreatePostForm = ({ onPostSubmit }) => {
+
+function CreatePostForm({ onCreatePost }) {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (!title.trim() || !content.trim()) {
-      return;
-    }
-
-    onPostSubmit({ title, content });
-    
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onCreatePost({ title, content });
     setTitle('');
     setContent('');
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="title">Title:</label>
-        <input
-          type="text"
-          id="title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-      </div>
-      <div>
-        <label htmlFor="content">Content:</label>
-        <textarea
-          id="content"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-        />
-      </div>
+      <input
+        type="text"
+        placeholder="Title"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+      />
+      <textarea
+        placeholder="Content"
+        value={content}
+        onChange={(e) => setContent(e.target.value)}
+      />
       <button type="submit">Create Post</button>
     </form>
   );
-};
+}
 
 export default CreatePostForm;

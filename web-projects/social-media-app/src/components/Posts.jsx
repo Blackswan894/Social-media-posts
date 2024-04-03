@@ -1,24 +1,42 @@
-import React, { useState } from "react";
-import Comments from './Comments';
+import React, { useState } from 'react';
 
-export default function Posts(props){
+function Posts({ post }) {
+  const [likes, setLikes] = useState(post.likes);
+  const [comment, setComment] = useState('');
+  const [comments, setComments] = useState(post.comments);
 
-    const [likes, setLikes] = useState(0);
+  const handleLike = () => {
+    setLikes(likes + 1);
 
-    function handleLike(){
-        setLikes = (likes + 1);
-    }
-return(
-<div>
-<h3>{props.content}</h3>
-<p>This is a test post to be edited</p>
-<p>Likes: 30</p>
-<button onClick={handleLike}>Likes</button>
-<p>Comments: </p>
-<Comments content="This is a test comment!"/>
-<Comments content="This is another test comment!"/>
-<Comments content="This is yet another test comment!"/>
-</div>
+  };
 
-)    
+  const handleComment = () => {
+    setComments([...comments, comment]);
+    setComment('');
+    
+  };
+
+  return (
+    <div>
+      <h2>{post.title}</h2>
+      <p>{post.content}</p>
+      <button onClick={handleLike}>Like ({likes})</button>
+      <div>
+        <input
+          type="text"
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
+          placeholder="Add a comment"
+        />
+        <button onClick={handleComment}>Comment</button>
+      </div>
+      <ul>
+        {comments.map((comment, index) => (
+          <li key={index}>{comment}</li>
+        ))}
+      </ul>
+    </div>
+  );
 }
+
+export default Posts;
