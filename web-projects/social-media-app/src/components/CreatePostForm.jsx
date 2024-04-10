@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../components/createPostForm.css';
 
 
 function CreatePostForm({ onCreatePost }) {
@@ -13,7 +14,7 @@ function CreatePostForm({ onCreatePost }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className='create-post-form'>
       <input
         type="text"
         placeholder="Title"

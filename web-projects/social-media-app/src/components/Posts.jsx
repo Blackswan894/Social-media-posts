@@ -17,7 +17,7 @@ function Posts({ post }) {
   };
 
   return (
-    <div>
+    <div className='post'>
       <h2>{post.title}</h2>
       <p>{post.content}</p>
       <button onClick={handleLike}>Like ({likes})</button>
