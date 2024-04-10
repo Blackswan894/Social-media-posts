@@ -71,6 +71,7 @@
   .comment-button {
     padding: 5px 10px;
     margin-right: 10px;
+    margin-bottom: 5px;
     background-color: #6600ff;
     color: #742e63;
     border: none;
@@ -119,5 +120,7 @@
     height: 100px; 
   }
   
-
+.comment--{
+  margin-bottom: 10px;
+}
   

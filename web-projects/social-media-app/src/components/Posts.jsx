@@ -10,6 +10,11 @@ function Posts({ post }) {
 
   };
 
+  const handleDisLike = () => {
+    setLikes(likes - 1);
+
+  };
+
   const handleComment = () => {
     setComments([...comments, comment]);
     setComment('');
@@ -20,8 +25,8 @@ function Posts({ post }) {
     <div className='post'>
       <h2>{post.title}</h2>
       <p>{post.content}</p>
-      <button onClick={handleLike}>Like ({likes})</button>
-      <div>
+      
+      <div className='comment--'>
         <input
           type="text"
           value={comment}
@@ -30,6 +35,8 @@ function Posts({ post }) {
         />
         <button onClick={handleComment}>Comment</button>
       </div>
+      <button onClick={handleLike}>Like ({likes})</button>
+      <button onClick={handleDisLike}>DisLike({likes})</button>
       <ul>
         {comments.map((comment, index) => (
           <li key={index}>{comment}</li>
